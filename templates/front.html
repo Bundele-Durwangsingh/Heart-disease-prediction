@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Heart Disease Prediction</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body class="bg-sucess">
+  <h1>Heart Disease Prediction</h1>
+  {%if label%}
+  {%if label ==1 %}
+  <h3 style="color: red; text-align: center;">Might have heart Disease</h3>
+  {%else%}
+  <h3 style="color: green; text-align: center;">Might not have heart Disease</h3>
+  {%endif%}
+  {%endif%}
+  <form class="form" action="/predict" method="post">
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" required>
+
+    <label for="sex">Sex</label>
+    <select id="sex" name="sex" required>
+      <option value="">Select one</option>
+      <option value="1">Male</option>
+      <option value="0">Female</option>
+    </select>
+
+    <label for="chest-pain-type">Chest Pain Type</label>
+    <select id="cp" name="cp" required>
+      <option value="">Select one</option>
+      <option value="0">Typical angina</option>
+      <option value="1">Atypical angina</option>
+      <option value="2">Non-anginal pain</option>
+      <option value="3">Asymptomatic</option>
+    </select>
+
+    <label for="bp">Blood Pressure (mmHg)</label>
+    <input type="number" id="trestbps" name="trestbps" required>
+
+    <label for="cholesterol">Cholesterol (mg/dL)</label>
+    <input type="number" id="chol" name="chol" required>
+
+    <label for="fbs">Fasting Blood Sugar 120 mg/dL</label>
+    <select id="fbs" name="fbs" required>
+      <option value="">Select one</option>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <label for="ekg-results">Resting EKG Results</label>
+    <select id="restecg" name="restecg" required>
+      <option value="">Select one</option>
+      <option value="0">Normal</option>
+      <option value="1">ST-T wave abnormality</option>
+
+    </select>
+
+    <label for="max-hr">Max Heart Rate</label>
+    <input type="number" id="thalach" name="thalach" required>
+
+    <label for="exercise-angina">Exercise-Induced Angina</label>
+    <select id="exang" name="exang" required>
+      <option value="">Select one</option>
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+
+    <label for="st-depression">ST Depression</label>
+    <input type="number" id="oldpeak" name="oldpeak" step="0.1" required>
+
+    <label for="slope-of-st">Slope of ST Segment</label>
+    <select id="slope" name="slope" required>
+      <option value="">Select one</option>
+      <option value="0">Upsloping</option>
+      <option value="1">Flat</option>
+      <option value="2">Downsloping</option>
+    </select>
+    <label for="number-of-major-vessels">Numer Of Major Vessels</label>
+    <input id="ca" name="ca" required>
+
+    <label for="Thalassemia Value">Thalassemia Value</label>
+    <input id="thal" name="thal" required>
+    <input type="submit" value="predict" class="btn btn-block btn-sucess btn-lg text-light">
+  </form>
+</body>
