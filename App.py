@@ -13,7 +13,7 @@ def home():
     return render_template('front.html')
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/hdp_predict', methods=['POST'])
 def predict():
     age = int(request.form.get('age'))
     sex = int(request.form.get('sex'))
@@ -40,5 +40,3 @@ def predict():
         return render_template('front.html', label=-1)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)

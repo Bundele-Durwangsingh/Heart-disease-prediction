@@ -2,21 +2,56 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Heart Disease Prediction</title>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Heart-disease</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Do+Hyeon%3A400" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C900" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A900" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
-<body class="bg-sucess">
-  <h1>Heart Disease Prediction</h1>
-  {%if label%}
-  {%if label ==1 %}
-  <h3 style="color: red; text-align: center;">Might have heart Disease</h3>
-  {%else%}
-  <h3 style="color: green; text-align: center;">Might not have heart Disease</h3>
-  {%endif%}
-  {%endif%}
-  <form class="form" action="/predict" method="post">
+<body>
+  {% if label %}
+  <div id="result">
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        {% if label == 1 %}
+        <h1> Your are more likely to have a Heart disease</h1>
+        <p>
+
+        </p>
+        {% else %}
+        <h1>You are less likely to have heart disease at this time.</h1>
+        <p>
+
+        </p>
+        {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="heart-disease-VD1">
+    <div class="auto-group-mgud-c2j">
+      <div class="logotitle-LUX">
+        <div class="weblogo-zJB">
+          <img class="programmer-1-K5Z" src="{{ url_for('static', filename='image/programmer.png') }}" />
+        </div>
+        <div class="title-2Vm">
+          <p class="diagno-mCT">Diagno</p>
+          <p class="sure-h67">Sure</p>
+        </div>
+      </div>
+    </div>
+    <p class="heart-disease-prediction-R27">Heart Disease prediction</p>
+  </div>
+  <form class="form" action="/hdp_predict" method="post">
     <label for="age">Age</label>
     <input type="number" id="age" name="age" required>
 
@@ -83,4 +118,28 @@
     <input id="thal" name="thal" required>
     <input type="submit" value="predict" class="btn btn-block btn-sucess btn-lg text-light">
   </form>
+
+  <script>
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Function to close the modal
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    // When the page loads
+    window.onload = function () {
+      var label = "{{ label }}"; // Add quotes to the Flask variable
+      modal.style.display = "block"; // Show the modal by default
+    };
+
+    // Close button click event listener
+    span.onclick = closeModal;
+  </script>
+
+
+</body>
 </body>
